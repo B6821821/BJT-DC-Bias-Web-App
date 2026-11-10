@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Virtual environment (ห้าม commit)
+.venv/
+venv/
+env/
+
+# Secrets / environment
+.env
+*.key
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Flask / runtime artifacts
+instance/
+*.sqlite3
+*.log
