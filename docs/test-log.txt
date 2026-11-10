@@ -1,0 +1,25 @@
+﻿.\\.venv\\Scripts\\python.exe : test_cutoff_when_vth_below_vbe 
+(test_dc_bias.TestDcBias.test_cutoff_when_vth_below_vbe) ... ok
+At line:1 char:1
++ .\\.venv\\Scripts\\python.exe -m unittest discover -s tests -v 2>&1 | ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_cutoff_whe...low_vbe) ... ok:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+test_higher_beta_gives_higher_ic (test_dc_bias.TestDcBias.test_higher_beta_gives_higher_ic) ... ok
+test_invalid_components_rejected (test_dc_bias.TestDcBias.test_invalid_components_rejected) ... ok
+test_parse_number_rejects_empty_and_nan (test_dc_bias.TestDcBias.test_parse_number_rejects_empty_and_nan) ... ok
+test_parse_number_rejects_text (test_dc_bias.TestDcBias.test_parse_number_rejects_text) ... ok
+test_reference_values_forward_active (test_dc_bias.TestDcBias.test_reference_values_forward_active) ... ok
+test_saturation_warns (test_dc_bias.TestDcBias.test_saturation_warns) ... ok
+test_thevenin_equivalents (test_dc_bias.TestDcBias.test_thevenin_equivalents) ... ok
+test_calculate_shows_results (test_web.TestWebRoutes.test_calculate_shows_results) ... ok
+test_index_shows_form (test_web.TestWebRoutes.test_index_shows_form) ... ok
+test_invalid_input_shows_error_and_keeps_values 
+(test_web.TestWebRoutes.test_invalid_input_shows_error_and_keeps_values) ... ok
+test_non_numeric_shows_error (test_web.TestWebRoutes.test_non_numeric_shows_error) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.015s
+
+OK

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BJT DC Bias Calculator — ENG29 2121 Lab 02</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>BJT DC Bias Calculator</h1>
+    <div class="subtitle">Common-Emitter · Voltage-Divider Bias · ผลคำนวณจาก Python Backend</div>
+  </header>
+
+  <form action="{{ url_for('calculate') }}" method="post" class="form-card">
+    <div class="form-grid">
+      <div class="field">
+        <label>VCC <span class="unit">(V)</span></label>
+        <input name="vcc" type="text" inputmode="decimal" step="any" required
+               value="{{ form.vcc }}">
+      </div>
+      <div class="field">
+        <label>β <span class="unit">(โหมดการขยาย)</span></label>
+        <input name="beta" type="text" inputmode="decimal" step="any" required
+               value="{{ form.beta }}">
+      </div>
+      <div class="field">
+        <label>R1 <span class="unit">(kΩ)</span></label>
+        <input name="r1" type="text" inputmode="decimal" step="any" required
+               value="{{ form.r1 }}">
+      </div>
+      <div class="field">
+        <label>R2 <span class="unit">(kΩ)</span></label>
+        <input name="r2" type="text" inputmode="decimal" step="any" required
+               value="{{ form.r2 }}">
+      </div>
+      <div class="field">
+        <label>RC <span class="unit">(kΩ)</span></label>
+        <input name="rc" type="text" inputmode="decimal" step="any" required
+               value="{{ form.rc }}">
+      </div>
+      <div class="field">
+        <label>RE <span class="unit">(kΩ)</span></label>
+        <input name="re" type="text" inputmode="decimal" step="any" required
+               value="{{ form.re }}">
+      </div>
+      <div class="field">
+        <label>VBE <span class="unit">(V)</span></label>
+        <input name="vbe" type="text" inputmode="decimal" step="any" required
+               value="{{ form.vbe }}">
+      </div>
+      <div class="field field-full">
+        <button type="submit">คำนวณ DC Bias</button>
+      </div>
+    </div>
+  </form>
+
+  {% if error %}
+  <div class="msg error">⚠ {{ error }}</div>
+  {% endif %}
+
+  {% if result %}
+  <div class="result-card">
+    <h2>ผลลัพธ์</h2>
+
+    <div class="badge {{ region_class }}">
+      โหมดการทำงาน: {{ result.region }}
+    </div>
+
+    {% if result.warnings %}
+    <div class="msg warning">
+      {% for w in result.warnings %}
+      <div>{{ w }}</div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <table class="results">
+      <thead>
+        <tr><th>ปริมาณ</th><th>ค่า</th><th>หน่วย</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>VB</td><td>{{ "%.4f"|format(result.vb) }}</td><td>V</td></tr>
+        <tr><td>VE</td><td>{{ "%.4f"|format(result.ve) }}</td><td>V</td></tr>
+        <tr><td>VC</td><td>{{ "%.4f"|format(result.vc) }}</td><td>V</td></tr>
+        <tr><td>VCE</td><td>{{ "%.4f"|format(result.vce) }}</td><td>V</td></tr>
+        <tr><td>IC</td><td>{{ "%.4f"|format(result.ic * 1000) }}</td><td>mA</td></tr>
+        <tr><td>IB</td><td>{{ "%.2f"|format(result.ib * 1e6) }}</td><td>µA</td></tr>
+        <tr><td>IE</td><td>{{ "%.4f"|format(result.ie * 1000) }}</td><td>mA</td></tr>
+        <tr><td>VTH</td><td>{{ "%.4f"|format(result.vth) }}</td><td>V</td></tr>
+        <tr><td>RTH</td><td>{{ "%.4f"|format(result.rth_kohm) }}</td><td>kΩ</td></tr>
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+
+  <footer class="page-footer">
+    ENG29 2121 · Lab 02 · รันผ่าน Flask server ที่ http://127.0.0.1:5000/
+  </footer>
+</div>
+</body>
+</html>

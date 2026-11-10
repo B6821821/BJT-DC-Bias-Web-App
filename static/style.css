@@ -1,0 +1,197 @@
+/* BJT DC Bias Web App — static/style.css */
+/* ไม่ใช้ JavaScript, ไม่ใช้ CDN, ฟอนต์ระบบเท่านั้น */
+
+:root {
+  --bg: #f7f8fa;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --ok: #15803d;
+  --warn: #b45309;
+  --bad: #b91c1c;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.page {
+  max-width: 760px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+header {
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin: 0 0 6px 0;
+  font-size: 22px;
+  letter-spacing: 0.2px;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.form-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 20px 16px 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field-full { grid-column: 1 / -1; }
+
+label {
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.unit {
+  font-weight: 400;
+  color: var(--muted);
+  font-size: 12px;
+  margin-left: 6px;
+}
+
+input {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 14px;
+  background: #fff;
+}
+
+input:focus {
+  outline: 2px solid var(--primary);
+  border-color: transparent;
+}
+
+button {
+  grid-column: 1 / -1;
+  width: 100%;
+  padding: 10px 14px;
+  margin-top: 4px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover { background: var(--primary-hover); }
+button:active { transform: translateY(1px); }
+
+.msg {
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+
+.msg.error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: var(--bad);
+}
+
+.msg.warning {
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+  color: var(--warn);
+}
+
+.result-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 20px 18px 20px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+
+.result-card h2 {
+  margin: 0 0 12px 0;
+  font-size: 17px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.region-forward-active { background: #dcfce7; color: var(--ok); border: 1px solid #86efac; }
+.region-cutoff { background: #fef2f2; color: var(--bad); border: 1px solid #fecaca; }
+.region-saturation { background: #fffbeb; color: var(--warn); border: 1px solid #fcd34d; }
+
+table.results {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+table.results th {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 2px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+table.results td {
+  padding: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+table.results td:nth-child(2) {
+  font-variant-numeric: tabular-nums;
+}
+
+table.results tr:last-child td { border-bottom: none; }
+
+.page-footer {
+  margin-top: 22px;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+/* จอแคบ: ฟอร์มอยู่คอลัมน์เดียว */
+@media (max-width: 480px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .page { padding: 0 12px; }
+}
